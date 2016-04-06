@@ -1,81 +1,38 @@
-# heroku-ledger
+# node-js-sample
 
-A [Heroku](http://www.heroku.com) web app using Compojure.
+A barebones Node.js app using [Express 4](http://expressjs.com/).
 
-This generated project has a few basics set up beyond the bare Compojure defaults:
+## Running Locally
 
-* Cookie-backed session store
-* Stack traces when in development
-* Environment-based config via [environ](https://github.com/weavejester/environ)
-* [HTTP-based REPL debugging](https://devcenter.heroku.com/articles/debugging-clojure) via [drawbridge](https://github.com/cemerick/drawbridge)
+Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
-## Usage
+```sh
+git clone git@github.com:heroku/node-js-sample.git # or clone your own fork
+cd node-js-sample
+npm install
+npm start
+```
 
-To start a local web server for development you can either eval the
-commented out forms at the bottom of `web.clj` from your editor or
-launch from the command line:
+Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-    $ lein run -m heroku-ledger.web
+## Deploying to Heroku
 
-Initialize a git repository for your project.
+```
+heroku create
+git push heroku master
+heroku open
+```
 
-    $ git init
-    $ git add .
-    $ git commit -m "Initial commit."
+Alternatively, you can deploy your own copy of the app using the web-based flow:
 
-You'll need the [heroku toolbelt](https://toolbelt.herokuapp.com)
-installed to manage the heroku side of your app. Once it's installed,
-get the app created:
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-    $ heroku apps:create heroku-ledger
-    Creating heroku-ledger... done, stack is cedar
-    http://heroku-ledger.herokuapp.com/ | git@heroku.com:heroku-ledger.git
-    Git remote heroku added
+## Documentation
 
-You can deploy the skeleton project immediately:
+For more information about using Node.js on Heroku, see these Dev Center articles:
 
-    $ git push heroku master
-    Writing objects: 100% (13/13), 2.87 KiB, done.
-    Total 13 (delta 0), reused 0 (delta 0)
-
-    -----> Heroku receiving push
-    -----> Clojure app detected
-    -----> Installing Leiningen
-           Downloading: leiningen-2.0.0-preview7-standalone.jar
-    [...]
-    -----> Launching... done, v3
-           http://heroku-ledger.herokuapp.com deployed to Heroku
-
-    To git@heroku.com:heroku-ledger.git
-     * [new branch]      master -> master
-
-It's live! Hit it with `curl`:
-
-    $ curl http://heroku-ledger.herokuapp.com
-    ["Hello" :from Heroku]
-
-The cookie-backed session store needs a session secret configured for encryption:
-
-    $ heroku config:add SESSION_SECRET=$RANDOM_16_CHARS
-
-## Remote REPL
-
-The [devcenter article](https://devcenter.heroku.com/articles/debugging-clojure)
-has a detailed explanation, but using the `repl` task from Leiningen
-2.x lets you connect a REPL to a remote process over HTTP. The first
-step is setting up credentials:
-
-    $ heroku config:add REPL_USER=[...] REPL_PASSWORD=[...]
-
-Then you can launch the REPL:
-
-    $ lein repl :connect http://$REPL_USER:$REPL_PASSWORD@heroku-ledger.herokuapp.com/repl
-
-Everything you enter will be evaluated remotely in the running dyno,
-which can be very useful for debugging or inspecting live data.
-
-## License
-
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License, the same as Clojure.
+- [10 Habits of a Happy Node Hacker](https://blog.heroku.com/archives/2014/3/11/node-habits)
+- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
+- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
+- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)

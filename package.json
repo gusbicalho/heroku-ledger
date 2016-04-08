@@ -2,13 +2,12 @@
   "name": "node-js-sample",
   "version": "0.2.0",
   "description": "A sample Node.js app using Express 4",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ."
   },
   "dependencies": {
     "express": "^4.13.3",
-    "ledger-cli": "~0.2.0",
     "lodash": "^4.8.2",
     "pty.js": "~0.3.0"
   },

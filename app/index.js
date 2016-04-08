@@ -12,10 +12,15 @@ app.use(express.static(__dirname + '/public'))
 
 app
 .get('/', function(request, response) {
-  cli.exec(['--version']).stdout
-  .pipe(response.type('txt'));
+  console.log('GET /')
+  var proc = cli.exec(['--version'])
+  proc.stdout.pipe(response.type('text/plain'));
+  proc.stderr.on('error', (error) => {
+    response.setStatus(500).send(error);
+  })
 })
 .get('/sample/bal', (req, res) => {
+  console.log('GET /sample/bal')
   cli.exec(['-f','sample.dat','bal']).stdout
   .pipe(res.type('txt'));
 })

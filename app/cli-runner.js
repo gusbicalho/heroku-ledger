@@ -2,7 +2,7 @@ var _ = require('lodash'),
     pty = require('pty.js')
     raw_spawn = require('child_process').spawn
     spawn = function(command, args) {
-      return raw_spawn('node', ['tty-run', command].concat(args));
+      return raw_spawn('node', ['app/tty-run', command].concat(args));
     };
 
 var Cli = (function() {
@@ -24,12 +24,12 @@ var Cli = (function() {
   Cli.prototype.spawn = function(args) {
     this.log(this.command + ' ' + args.join(' '));
 
-    var process = spawn(this.command, args);
+    var proc = spawn(this.command, args);
 
-    process.stdout.setEncoding('utf8');
-    process.stderr.setEncoding('utf8');
+    proc.stdout.setEncoding('utf8');
+    proc.stderr.setEncoding('utf8');
 
-    return process;
+    return proc;
   };
 
   Cli.prototype.logging = function(process) {

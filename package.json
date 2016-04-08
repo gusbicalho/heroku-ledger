@@ -9,7 +9,8 @@
   "dependencies": {
     "express": "^4.13.3",
     "lodash": "^4.8.2",
-    "pty.js": "~0.3.0"
+    "pty.js": "~0.3.0",
+    "shell-escape": "^0.2.0"
   },
   "engines": {
     "node": "4.0.0"
